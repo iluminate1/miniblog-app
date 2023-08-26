@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="form" method="POST">
+    {% csrf_token %}
+    <p style="text-align: center; font-family: Aria; font-weight: bold;">FeedBack</p>
+    <div class="flex">
+        <label for="{{ form.first_name.id_for_label }}">
+            {{ form.first_name }}
+            <span>{{form.first_name.label}}</span>
+        </label>
+
+        <label for="{{ form.last_name.id_for_label }}">
+            {{ form.last_name }}
+            <span>{{form.last_name.label}}</span>
+        </label>
+
+    </div>
+
+    <label for="{{ form.email.id_for_label }}">
+
+        {{ form.email }}
+        <span>{{form.email.label}}</span>
+    </label>
+
+    <label for="{{ form.content.id_for_label }}">
+        {{ form.content }}
+        <span>{{form.content.label}}</span>
+    </label>
+    <div class="form-error">{{ form.non_field_errors }}</div>
+    <button class="fancy" type="submit">
+        <span class="top-key"></span>
+        <span class="text">submit</span>
+        <span class="bottom-key-1"></span>
+        <span class="bottom-key-2"></span>
+    </button>
+</form>
+
+{% endblock %}

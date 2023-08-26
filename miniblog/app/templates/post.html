@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{post.title}}</h1>
+<form action="{{ post.link }}" target="_blank">
+    <button class="button"> Open Wiki </button>
+</form>
+{% if post.photo %}
+<p><img class="img-article-left" src="{{post.photo.url}}"></p>
+{% endif %}
+
+{{post.content|linebreaks}}
+
+
+<form action="{{ post.link }}" target="_blank">
+    <button class="button"> Open Wiki </button>
+</form>
+
+{% endblock %}

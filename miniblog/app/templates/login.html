@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="container">
+        <div class="card">
+            <p class="login">Sign in</p>
+            <div class="inputBox">
+                <label for="{{ form.username.id_for_label }}">
+                    {{ form.username }}
+                    <span class="user">Username</span>
+                    {% if form.username.errors %}
+                    <div class="form-error">{{ form.username.errors }}</div>
+                    {% endif %}
+                </label>
+            </div>
+
+            <div class="inputBox">
+                <label for="{{ form.password.id_for_label }}">
+                    {{ form.password }}
+                    <span>Password</span>
+                    {% if form.password.errors %}
+                    <div class="form-error">{{ form.password.errors }}</div>
+                    {% endif %}
+                </label>
+            </div>
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            <button class="enter" type="submit">Enter</button>
+            <p class="signup-link">
+                No account?
+                <a href="{% url 'register' %}">Sign up</a>
+            </p>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}
