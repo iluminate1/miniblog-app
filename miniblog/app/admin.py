@@ -63,11 +63,12 @@ class FeedBackAdmin(admin.ModelAdmin):
         "first_name",
         "last_name",
         "email",
-        "time_create",
         "shotter",
+        "time_create",
     )
     list_display_links = ("id",)
     search_fields = ("user", "content", "email")
+    readonly_fields = ("time_create", "shotter")
     fields = (
         "user",
         "first_name",
@@ -75,7 +76,7 @@ class FeedBackAdmin(admin.ModelAdmin):
         "email",
         "time_create",
         "content",
-        "shotter"
+        "shotter",
     )
     save_on_top = True
 

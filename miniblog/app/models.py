@@ -69,4 +69,4 @@ class FeedBack(models.Model):
     content = models.TextField(max_length=255, verbose_name='Message')
 
     def __str__(self):
-        return self.user
+        return str(self.user)
