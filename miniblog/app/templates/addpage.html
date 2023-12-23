@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="postBox">
+    <span class="title">New Book</span>
+    <form method="post" enctype="multipart/form-data" class="postForm">
+        {% csrf_token %}
+
+        <div class="group">
+            <label for="{{ form.title.id_for_label }}">{{form.title.label}}</label>
+            {{ form.title }}
+            {% if form.title.errors %}
+                <div class="form-error">{{ form.title.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="group">
+            <label for="{{ form.author.id_for_label }}">{{form.author.label}}</label>
+            {{ form.author }}
+            {% if form.author.errors %}
+                <div class="form-error">{{ form.author.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="group">
+            <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+            {{ form.content }}
+            {% if form.content.errors %}
+                <div class="form-error">{{ form.content.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="group">
+            <label for="{{ form.photo.id_for_label }}">{{ form.photo.label }}</label>
+            {{ form.photo }}
+            {% if form.photo.errors %}
+                <div class="form-error">{{ form.photo.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="group">
+            <label for="{{ form.link.id_for_label }}">{{ form.link.label }}</label>
+            {{ form.link }}
+            {% if form.link.errors %}
+                <div class="form-error">{{ form.link.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="group">
+            <label for="{{ form.is_published.id_for_label }}" class="check-cont">{{ form.is_published.label }}</label>
+            {{ form.is_published }}
+            {% if form.is_published.errors %}
+                <div class="form-error">{{ form.is_published.errors }}</div>
+            {% endif %}
+            <div class="checkmark"></div>
+        </div>
+
+        <div class="group">
+            <label for="content"></label>
+            <label class="select">
+                <label for="{{ form.cat.id_for_label }}"></label>
+                {{ form.cat }}
+                {% if form.cat.errors %}
+                    <div class="form-error">{{ form.cat.errors }}</div>
+                {% endif %}
+                <svg>
+                    <use xlink:href="#select-arrow-down"></use>
+                </svg>
+            </label>
+            <svg class="sprites">
+                <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                    <polyline points="1 1 5 5 9 1"></polyline>
+                </symbol>
+            </svg>
+        </div>
+
+        <div class="form-error">{{ form.non_field_errors }}</div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div> 
+
+
+{% endblock %}

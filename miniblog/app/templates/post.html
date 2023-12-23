@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{post.title}}</h1>
+<h4>Author: {{post.author}}</h4>
+{% if post.link %}
+<form action="{{ post.link }}" target="_blank">
+    <button class="button"> Open Google Books</button>
+</form>
+{% endif %}
+
+{% if post.photo %}
+<p><img class="img-article-left" src="{{post.photo.url}}"></p>
+{% endif %}
+
+{{post.content|linebreaks}}
+
+{% if post.link %}
+<form action="{{ post.link }}" target="_blank">
+    <button class="button"> Open Google Books </button>
+</form>
+{% endif %}
+
+{% endblock %}

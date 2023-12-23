@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ block.super }}
+    <h1 style="text-align: center; font-family: Aria;">{{ title|upper }} PAGE</h1>
+    <h2>Some info here</h2>
+    <h3>Total post's on site = {{ item_amount.count }}</h3>
+    <h3>Total categories on site = {{ cats.count }}</h3>
+    {% for c in cats %}
+        <p style="font-weight: bold;">{{c.name}} = {{c.item__count}}</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="container">
+        <div class="card">
+            <p class="login">Sign up</p>
+            <div class="inputBox">
+                <label for="{{ form.username.id_for_label }}">
+                    {{ form.username }}
+                    <span class="user">{{form.username.label}}</span>
+                    {% if form.username.errors %}
+                    <div class="form-error">{{ form.username.errors }}</div>
+                    {% endif %}
+                </label>
+            </div>
+
+            <div class="inputBox">
+                <label for="{{ form.email.id_for_label }}">
+                    {{ form.email }}
+                    <span>{{form.email.label}}</span>
+                    {% if form.email.errors %}
+                    <div class="form-error">{{ form.email.errors }}</div>
+                    {% endif %}
+                </label>
+            </div>
+
+            <div class="inputBox">
+                <label for="{{ form.password1.id_for_label }}">
+                    {{ form.password1 }}
+                    <span>{{form.password1.label}}</span>
+                    {% if form.password1.errors %}
+                    <div class="form-error">{{ form.password1.errors }}</div>
+                    {% endif %}
+                </label>
+            </div>
+            <div class="inputBox">
+                <label for="{{ form.password2.id_for_label }}">
+                    {{ form.password2 }}
+                    <span>{{form.password2.label}}</span>
+                    {% if form.password2.errors %}
+                    <div class="form-error">{{ form.password2.errors }}</div>
+                    {% endif %}
+                </label>
+            </div>
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            <button class="enter" type="submit">Enter</button>
+            <p class="signup-link">
+                Have account?
+                <a href="{% url 'login' %}">Sign in</a>
+            </p>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
